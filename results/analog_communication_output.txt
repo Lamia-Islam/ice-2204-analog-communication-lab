@@ -1,0 +1,31 @@
+== Amplitude modulation (message 500 Hz, carrier 10 kHz) ==
+mu = 0.5: power efficiency 11.1%; envelope detector error (RMS vs message) 0.000
+mu = 1.0: power efficiency 33.3%; envelope detector error (RMS vs message) 0.000
+mu = 1.5: power efficiency 52.9%; envelope detector error (RMS vs message) 0.202  <- over-modulated, envelope distorted
+AM spectrum peaks (Hz, relative amplitude): [(9500, 0.25), (10001, 1.0), (10500, 0.25)]; bandwidth = 2 x fm = 1000 Hz
+
+== DSB-SC and coherent detection ==
+DSB-SC peaks: [(9500, 1.0), (10500, 1.0)] (no carrier line); coherent demodulation error 0.0000
+  local oscillator phase error 30 deg: recovered amplitude 0.866 (theory cos(phase) = 0.866)
+  local oscillator phase error 60 deg: recovered amplitude 0.500 (theory cos(phase) = 0.500)
+  local oscillator phase error 90 deg: recovered amplitude 0.000 (theory cos(phase) = 0.000)
+
+== SSB ==
+Upper sideband only: peaks [(10500, 1.0)], bandwidth = fm = 500 Hz, half that of DSB
+
+== Frequency modulation ==
+Frequency deviation 2500 Hz, modulation index beta = 5.0; Carson bandwidth = 2(df + fm) = 6000 Hz
+Measured: lines above 10% of the peak span 6494 Hz to 13506 Hz (width 7011 Hz). Carson's rule is an approximation that captures about 98% of the power, so the two need not match
+FM demodulation by phase differentiation (noise-free): error 0.0000
+Carrier line amplitude against Bessel J0(beta), carrier amplitude 1 for an unmodulated carrier:
+  beta = 0.5000: measured 0.938, |J0| = 0.938
+  beta = 1.0000: measured 0.765, |J0| = 0.765
+  beta = 2.4048: measured 0.000, |J0| = 0.000
+  beta = 5.0000: measured 0.178, |J0| = 0.178
+  (beta = 2.4048 is the first zero of J0: the carrier line nearly vanishes)
+
+== Noise: output SNR of AM versus FM ==
+input SNR  5 dB: AM output SNR  11.6 dB, FM (beta=5) output SNR  12.3 dB
+input SNR 10 dB: AM output SNR  16.1 dB, FM (beta=5) output SNR  32.1 dB
+input SNR 15 dB: AM output SNR  21.2 dB, FM (beta=5) output SNR  36.6 dB
+input SNR 20 dB: AM output SNR  26.3 dB, FM (beta=5) output SNR  42.0 dB
